@@ -1,0 +1,4 @@
+# Swap comprimida en RAM (zram-tools): mucho más rápida que una swap en disco.
+ALGO=zstd
+PERCENT=50
+PRIORITY=100

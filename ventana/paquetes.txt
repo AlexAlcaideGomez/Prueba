@@ -1,0 +1,29 @@
+# Paquetes de Ventana Linux (Debian 13). Uno o varios por línea; '#' inicia un comentario.
+# Si alguno no existe en los repositorios configurados, postinstall.sh lo omite con un aviso.
+
+# Escritorio XFCE: ligero, y con su panel se reproduce la barra de tareas de Windows
+xorg lightdm lightdm-gtk-greeter
+xfce4 xfce4-whiskermenu-plugin xfce4-pulseaudio-plugin xfce4-power-manager
+xfce4-power-manager-plugins xfce4-notifyd xfce4-screensaver xfce4-screenshooter
+xfce4-taskmanager xfce4-terminal xfce4-appfinder
+thunar-archive-plugin thunar-volman gvfs-backends xarchiver xdg-user-dirs-gtk
+mousepad ristretto
+
+# Aspecto: tema plano claro, iconos y fuentes compatibles con las de Office
+arc-theme papirus-icon-theme
+fonts-noto-core fonts-noto-mono fonts-noto-color-emoji
+fonts-liberation2 fonts-crosextra-carlito fonts-crosextra-caladea
+
+# Red, sonido y Bluetooth
+network-manager network-manager-gnome wpasupplicant
+pipewire-audio pavucontrol blueman
+
+# Aplicaciones de uso diario
+firefox-esr libreoffice-writer libreoffice-calc libreoffice-impress libreoffice-gtk3
+vlc synaptic cups system-config-printer
+
+# Rendimiento y mantenimiento
+zram-tools earlyoom unattended-upgrades sudo
+
+# Firmware y microcódigo (componente non-free-firmware)
+firmware-linux intel-microcode amd64-microcode

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Ventana Linux: ajustes del primer inicio
+Exec=/usr/local/bin/ventana-primer-inicio
+OnlyShowIn=XFCE;
+NoDisplay=true

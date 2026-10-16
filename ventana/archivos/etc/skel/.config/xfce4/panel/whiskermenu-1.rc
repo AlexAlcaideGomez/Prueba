@@ -1,0 +1,11 @@
+button-title=Inicio
+button-icon=start-here
+show-button-title=false
+show-button-icon=true
+launcher-show-name=true
+launcher-show-description=false
+position-search-alternate=true
+position-commands-alternate=true
+menu-width=480
+menu-height=560
+favorites=firefox-esr.desktop,thunar.desktop,libreoffice-writer.desktop,libreoffice-calc.desktop,vlc.desktop,org.xfce.mousepad.desktop,xfce4-terminal.desktop,xfce-settings-manager.desktop

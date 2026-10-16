@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+# Atajos de teclado al estilo Windows. Se aplican dentro de la sesión XFCE
+# porque necesitan xfconfd en marcha; solo se ejecuta una vez por usuario.
+set -u
+
+marca="${XDG_CONFIG_HOME:-$HOME/.config}/ventana/primer-inicio-hecho"
+[[ -e $marca ]] && exit 0
+command -v xfconf-query >/dev/null || exit 0
+
+canal=xfce4-keyboard-shortcuts
+
+# xfsettingsd copia los atajos predeterminados a "custom" al arrancar la
+# primera sesión. Se espera a que lo haga para no sustituirlos por los nuestros.
+for _ in $(seq 30); do
+  xfconf-query -c "$canal" -p /commands/custom/override >/dev/null 2>&1 && break
+  sleep 1
+done
+# Si no apareció, se reintenta en el próximo inicio de sesión.
+xfconf-query -c "$canal" -p /commands/custom/override >/dev/null 2>&1 || exit 0
+
+atajo() {
+  xfconf-query -c "$canal" -p "/commands/custom/$1" -s "$2" 2>/dev/null ||
+    xfconf-query -c "$canal" -p "/commands/custom/$1" -n -t string -s "$2"
+}
+
+atajo 'Super_L' 'xfce4-popup-whiskermenu'          # tecla Windows: menú Inicio
+atajo '<Super>e' 'thunar'                          # Win+E: explorador de archivos
+atajo '<Super>r' 'xfce4-appfinder --collapsed'     # Win+R: ejecutar
+atajo '<Super>l' 'xflock4'                         # Win+L: bloquear
+atajo '<Primary><Shift>Escape' 'xfce4-taskmanager' # Ctrl+Mayús+Esc: administrador de tareas
+
+mkdir -p "${marca%/*}" && touch "$marca"
